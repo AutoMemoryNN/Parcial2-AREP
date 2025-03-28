@@ -32,9 +32,11 @@ public class ProxyController {
 
             if (flowControl) {
                 obj = new URL(URL1 + number.toString());
+                System.out.println("llamando a URL1");
                 flowControl = false;
             } else {
                 obj = new URL(URL2 + number.toString());
+                System.out.println("llamando a URL2");
                 flowControl = true;
             }
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
