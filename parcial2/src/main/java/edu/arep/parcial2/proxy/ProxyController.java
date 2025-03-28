@@ -1,9 +1,7 @@
 package edu.arep.parcial2.proxy;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
@@ -18,13 +16,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProxyController {
 
     private static final String USER_AGENT = "Mozilla/5.0";
-    private static final String GET_URL = "";
+    private static Boolean flowControl = true;
+    private static final String URL1 = "";
+    private static final String URL2 = "";
 
     @GetMapping("/collatz")
     public ResponseEntity<Map<String, String>> collatz(@RequestParam Integer number) {
         try {
+            URL obj = null;
 
-            URL obj = new URL(GET_URL);
+            if (flowControl) {
+                obj = new URL(URL1);
+                flowControl = false;
+            } else {
+                obj = new URL(URL2);
+                flowControl = true;
+            }
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("User-Agent", USER_AGENT);
@@ -54,10 +61,16 @@ public class ProxyController {
                 return ResponseEntity.ok(res);
             } else {
                 System.out.println("GET request not worked");
-                return null;
+                HashMap<String, String> res = new HashMap<>();
+                res.put("operation", "collatzsequence");
+                res.put("input", number.toString());
+                return ResponseEntity.ok(res);
             }
         } catch (Exception e) {
-            return null;
+            HashMap<String, String> res = new HashMap<>();
+            res.put("operation", "collatzsequence");
+            res.put("input", number.toString());
+            return ResponseEntity.ok(res);
         }
 
     }
