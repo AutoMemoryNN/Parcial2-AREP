@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Collatz1</h1>
+        <h1>Collatz</h1>
         <form action="/collatz">
             <label for="name">input Number:</label><br>
-            <input type="text" id="inNumber" name="inNumber" value="16"><br><br>
+            <input type="text" id="inNumber" name="inNumber" value="17"><br><br>
             <input type="button" value="Submit" onclick="loadGetMsg()">
         </form> 
         <div id="getrespmsg"></div>
@@ -26,27 +26,6 @@
                 xhttp.send();
             }
         </script>
-
-<h1>Collatz2</h1>
-<form action="/collatz">
-    <label for="name">input Number:</label><br>
-    <input type="text" id="inNumber" name="inNumber" value="16"><br><br>
-    <input type="button" value="Submit" onclick="loadGetMsg()">
-</form> 
-<div id="getrespmsg"></div>
-
-<script>
-    function loadGetMsg() {
-        let nameVar = document.getElementById("inNumber").value;
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function() {
-            document.getElementById("getrespmsg").innerHTML =
-            this.responseText;
-        }
-        xhttp.open("GET", "/collatz?number="+nameVar);
-        xhttp.send();
-    }
-</script>
 
     </body>
 </html>

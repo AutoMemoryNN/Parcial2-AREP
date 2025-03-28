@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.arep</groupId>
-	<artifactId>parcial2</artifactId>
+	<artifactId>collatz</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>parcial2</name>
+	<name>collatz</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
