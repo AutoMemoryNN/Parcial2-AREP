@@ -15,3 +15,5 @@ Parametros a cambiar via variables de entorno
 ![alt text](image-2.png)
 
 Aca se colocarias las url de aws
+
+todos  los modulos se conectaros exitosamente en este momento haria falta el despliegue de ec2
